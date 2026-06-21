@@ -30,48 +30,81 @@ body::before{
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
+
 .top-logo{position:absolute;top:32px;left:32px;display:flex;align-items:center;gap:9px;font-family:var(--fd);font-size:19px;font-weight:600;z-index:2}
 .top-logo svg{width:26px;height:26px}
+.back-home{position:absolute;top:36px;right:32px;font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:6px;z-index:2;transition:color .2s}
+.back-home:hover{color:var(--amber)}
+.back-home svg{width:13px;height:13px}
+
 .auth-wrap{width:100%;max-width:440px;position:relative;z-index:1}
-.panel{background:var(--bg-surface);border:1px solid var(--line);border-radius:20px;padding:36px 32px}
-.panel-eyebrow{font-family:var(--fm);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--amber);margin-bottom:12px;display:flex;align-items:center;gap:7px}
-.panel-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber)}
-.panel-title{font-family:var(--fd);font-size:25px;font-weight:600;margin-bottom:10px}
-.panel-sub{font-size:14.5px;color:var(--ink2);margin-bottom:26px;line-height:1.6}
-.field-group{margin-bottom:16px}
+
+.auth-card{background:var(--bg-surface);border:1px solid var(--line);border-radius:20px;padding:36px 32px}
+.auth-eyebrow{font-family:var(--fm);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--amber);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.auth-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.auth-title{font-family:var(--fd);font-size:25px;font-weight:600;margin-bottom:8px}
+.auth-sub{font-size:13.5px;color:var(--ink2);margin-bottom:26px;line-height:1.55}
+
+.field-group{margin-bottom:20px}
 .field-label{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:600;margin-bottom:7px;display:block}
 .field-input{width:100%;background:var(--bg-deep);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;color:var(--ink);font-family:var(--ff);font-size:14.5px;outline:none;transition:border-color .2s}
 .field-input:focus{border-color:var(--amber)}
 .field-input::placeholder{color:var(--ink3)}
+
 .btn-submit{width:100%;padding:13px;border-radius:var(--rp);background:var(--amber);color:#1A1306;font-weight:700;font-size:14.5px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s var(--ease);margin-top:6px}
 .btn-submit:hover{background:#F0B25A;transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(232,163,61,.45)}
 .btn-submit svg{width:16px;height:16px}
+
+.terms-note{font-size:12px;color:var(--ink3);text-align:center;margin-top:18px;line-height:1.5}
+
+@media (max-width:480px){
+  .auth-card{padding:28px 22px}
+  .top-logo{position:static;margin-bottom:24px;justify-content:center}
+  .back-home{display:none}
+  body{align-items:flex-start;padding-top:32px}
+}
 </style>
 </head>
 <body>
+
 <a href="index.html" class="top-logo">
   <svg viewBox="0 0 30 30" fill="none"><rect x="2" y="2" width="26" height="26" rx="7" fill="#112B26" stroke="#E8A33D" stroke-width="1.5"/><path d="M9 15.5L13 19.5L21 10.5" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   Crivo
 </a>
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  Voltar ao site
+</a>
+
 <div class="auth-wrap">
-  <div class="panel">
-    <div class="panel-eyebrow">Acesso de empresa</div>
-    <h1 class="panel-title">Bem-vinda de volta</h1>
-    <p class="panel-sub">Entre para acompanhar seus relatórios.</p>
+  <div class="auth-card">
+    <div class="auth-eyebrow">Acesso de empresa</div>
+    <h1 class="auth-title">Bem-vinda de volta</h1>
+    <p class="auth-sub">Entre para acompanhar seus relatórios e conversar com seu economista.</p>
+
     <form id="loginForm">
       <div class="field-group">
         <label class="field-label">E-mail</label>
-        <input class="field-input" type="email" placeholder="voce@empresa.com" required>
+        <input class="field-input" type="email" id="loginEmail" placeholder="voce@empresa.com" required>
       </div>
       <div class="field-group">
         <label class="field-label">Senha</label>
-        <input class="field-input" type="password" placeholder="••••••••" required>
+        <input class="field-input" type="password" id="loginPass" placeholder="••••••••" required>
       </div>
-      <button type="submit" class="btn-submit" onclick="alert('Esta é uma demonstração. Qualquer e-mail e senha funcionam.'); window.location.href='painel-empresa.html'; return false;">
-        Entrar
+      <button type="submit" class="btn-submit">
+        <span>Entrar</span>
       </button>
     </form>
+
+    <p class="terms-note">Esta é uma demonstração. Qualquer e-mail e senha entram.</p>
   </div>
 </div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('Login simulado! Bem-vindo ao Crivo.');
+});
+</script>
 </body>
 </html>
