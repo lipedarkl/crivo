@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crivo — Entrar ou Cadastrar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#0B1F1C;--bg-surface:#112B26;--bg-surf2:#163831;
+  --ink:#F2EEE3;--ink2:#9FB3AC;--ink3:#5E7770;
+  --amber:#E8A33D;--amber-soft:#E8A33D1A;--coral:#E8633D;
+  --line:#1E3D36;--line2:#2A5048;
+  --ff:'Inter',sans-serif;--fm:'JetBrains Mono',monospace;--fd:'Fraunces',serif;
+  --r:14px;--rp:100px;--ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  background:var(--bg-deep);color:var(--ink);font-family:var(--ff);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:24px;position:relative;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:radial-gradient(circle at 15% 15%, rgba(232,163,61,.05) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 85%, rgba(232,99,61,.04) 0%, transparent 40%);
+  pointer-events:none;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.top-logo{position:absolute;top:32px;left:32px;display:flex;align-items:center;gap:9px;font-family:var(--fd);font-size:19px;font-weight:600;z-index:2}
+.top-logo svg{width:26px;height:26px}
+.auth-wrap{width:100%;max-width:440px;position:relative;z-index:1}
+.panel{background:var(--bg-surface);border:1px solid var(--line);border-radius:20px;padding:36px 32px}
+.panel-eyebrow{font-family:var(--fm);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--amber);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.panel-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.panel-title{font-family:var(--fd);font-size:25px;font-weight:600;margin-bottom:10px}
+.panel-sub{font-size:14.5px;color:var(--ink2);margin-bottom:26px;line-height:1.6}
+.field-group{margin-bottom:16px}
+.field-label{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:600;margin-bottom:7px;display:block}
+.field-input{width:100%;background:var(--bg-deep);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;color:var(--ink);font-family:var(--ff);font-size:14.5px;outline:none;transition:border-color .2s}
+.field-input:focus{border-color:var(--amber)}
+.field-input::placeholder{color:var(--ink3)}
+.btn-submit{width:100%;padding:13px;border-radius:var(--rp);background:var(--amber);color:#1A1306;font-weight:700;font-size:14.5px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s var(--ease);margin-top:6px}
+.btn-submit:hover{background:#F0B25A;transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(232,163,61,.45)}
+.btn-submit svg{width:16px;height:16px}
+</style>
+</head>
+<body>
+<a href="index.html" class="top-logo">
+  <svg viewBox="0 0 30 30" fill="none"><rect x="2" y="2" width="26" height="26" rx="7" fill="#112B26" stroke="#E8A33D" stroke-width="1.5"/><path d="M9 15.5L13 19.5L21 10.5" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Crivo
+</a>
+<div class="auth-wrap">
+  <div class="panel">
+    <div class="panel-eyebrow">Acesso de empresa</div>
+    <h1 class="panel-title">Bem-vinda de volta</h1>
+    <p class="panel-sub">Entre para acompanhar seus relatórios.</p>
+    <form id="loginForm">
+      <div class="field-group">
+        <label class="field-label">E-mail</label>
+        <input class="field-input" type="email" placeholder="voce@empresa.com" required>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Senha</label>
+        <input class="field-input" type="password" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-submit" onclick="alert('Esta é uma demonstração. Qualquer e-mail e senha funcionam.'); window.location.href='painel-empresa.html'; return false;">
+        Entrar
+      </button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
