@@ -1,56 +1,56 @@
 # Crivo — IA Financeira Validada por Economistas
 
-Plataforma que conecta PMEs com análises financeiras geradas por IA e validadas por economistas reais.
+Plataforma que conecta PMEs com economistas para análises financeiras validadas por IA.
 
-## 📋 Descrição
+## 🎯 Visão Geral
 
 Crivo é uma solução inovadora que combina:
-- **IA rápida**: Gera relatórios financeiros em minutos
-- **Verificação humana**: Economistas validam cada análise
-- **Acessível**: Sem contrato de fidelidade
+- **Inteligência Artificial** para gerar relatórios financeiros rápidos
+- **Verificação Humana** por economistas registrados
+- **Interface Intuitiva** para empresas e economistas
 
-## 🚀 Como usar
+## 📁 Estrutura do Projeto
 
-1. Visite `index.html` para a página inicial
-2. Clique em "Começar agora" ou "Login" para acessar
-3. Navegue pelos diferentes tipos de análise disponíveis
+```
+├── index.html              # Página principal
+├── login.html              # Página de login
+├── solicitar.html          # Formulário de solicitação
+├── painel-empresa.html     # Painel da empresa
+├── painel.html             # Painel do economista
+├── chat.html               # Canal de comunicação
+└── README.md               # Este arquivo
+```
 
-## 📂 Estrutura
+## 🚀 Como Começar
 
-- `index.html` - Página inicial
-- `login.html` - Página de autenticação
-- Estilos CSS inline em cada arquivo
-- JavaScript funcional para validações básicas
+Este site é hospedado no GitHub Pages. Para acessar:
+
+1. Acesse: `https://lipedarkl.github.io/crivo/`
+
+## 🛠️ Desenvolvimento Local
+
+Para rodar localmente:
+
+```bash
+# Clone o repositório
+git clone https://github.com/lipedarkl/crivo.git
+cd crivo
+
+# Abra em um servidor local (Python 3)
+python -m http.server 8000
+
+# Ou com Node.js
+npx http-server
+```
+
+Depois acesse: `http://localhost:8000`
 
 ## 🎨 Design
 
-- **Cores**: Verde-petróleo (#0B1F1C) + Âmbar (#E8A33D)
-- **Tipografia**: Fraunces (display), Inter (body), JetBrains Mono (code)
-- **Responsivo**: Mobile-first approach
+- **Cores principais**: Verde-petróleo (#0B1F1C) com detalhes em âmbar (#E8A33D)
+- **Tipografia**: Fraunces (display), Inter (body), JetBrains Mono (código)
+- **Responsividade**: Mobile-first, adaptado para todas as telas
 
-## ⚙️ Configuração
+## 📄 Licença
 
-Este projeto é estático (HTML/CSS/JS). Para hospedar:
-
-### GitHub Pages
-1. Acesse Settings → Pages
-2. Selecione "Deploy from a branch"
-3. Escolha `main` como branch
-4. Salve
-
-Seu site estará disponível em: `https://lipedarkl.github.io/crivo/`
-
-### Outras plataformas
-- Vercel
-- Netlify
-- AWS S3 + CloudFront
-
-## 📝 Notas
-
-- Demonstração funcional completa
-- Pronto para hospedagem
-- Sem dependências externas (exceto Google Fonts)
-
----
-
-**Feito no Brasil 🇧🇷**
+Projeto de demonstração — 2026

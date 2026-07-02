@@ -26,6 +26,7 @@
     --radius-pill: 100px;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -36,16 +37,21 @@
     overflow-x: hidden;
     position: relative;
   }
+
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(circle at 20% 10%, rgba(232, 163, 61, 0.04) 0%, transparent 45%), radial-gradient(circle at 85% 70%, rgba(232, 99, 61, 0.03) 0%, transparent 40%);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(232, 163, 61, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 85% 70%, rgba(232, 99, 61, 0.03) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
   }
+
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
   a { color: inherit; text-decoration: none; }
+
   header {
     position: sticky;
     top: 0;
@@ -54,6 +60,7 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line-soft);
   }
+
   .header-inner {
     display: flex;
     align-items: center;
@@ -62,6 +69,7 @@
     max-width: 1180px;
     margin: 0 auto;
   }
+
   .logo {
     display: flex;
     align-items: center;
@@ -71,12 +79,10 @@
     font-weight: 600;
     letter-spacing: -0.01em;
   }
-  .logo-mark {
-    width: 30px;
-    height: 30px;
-    position: relative;
-  }
+
+  .logo-mark { width: 30px; height: 30px; position: relative; }
   .logo-mark svg { width: 100%; height: 100%; }
+
   nav { display: flex; align-items: center; gap: 36px; }
   .nav-links { display: flex; gap: 32px; }
   .nav-links a {
@@ -86,6 +92,7 @@
     transition: color 0.2s var(--ease-out);
   }
   .nav-links a:hover { color: var(--ink-primary); }
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -101,6 +108,7 @@
     transition: all 0.25s var(--ease-out);
     white-space: nowrap;
   }
+
   .btn-primary {
     background: var(--accent-amber);
     color: #1A1306;
@@ -110,14 +118,68 @@
     transform: translateY(-1px);
     box-shadow: 0 8px 20px -6px rgba(232, 163, 61, 0.5);
   }
+
   .btn-ghost {
     background: transparent;
     color: var(--ink-primary);
     border: 1px solid var(--line-strong);
   }
   .btn-ghost:hover { border-color: var(--accent-amber); background: var(--accent-amber-soft); }
-  .hero { position: relative; padding: 100px 0 90px; z-index: 1; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
+
+  .audience-toggle {
+    display: inline-flex;
+    background: var(--bg-surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    gap: 4px;
+    position: relative;
+  }
+
+  .audience-toggle button {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    padding: 9px 20px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    cursor: pointer;
+    border-radius: var(--radius-pill);
+    transition: color 0.3s var(--ease-out);
+  }
+
+  .audience-toggle button.active { color: #1A1306; }
+
+  .audience-pill-bg {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: calc(100% - 8px);
+    width: calc(50% - 4px);
+    background: var(--accent-amber);
+    border-radius: var(--radius-pill);
+    transition: transform 0.4s var(--ease-out);
+    z-index: 1;
+  }
+
+  .audience-toggle[data-mode="economista"] .audience-pill-bg { transform: translateX(100%); }
+
+  .hero {
+    position: relative;
+    padding: 100px 0 90px;
+    z-index: 1;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px;
+    align-items: center;
+  }
+
   .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -129,6 +191,7 @@
     margin-bottom: 28px;
     text-transform: uppercase;
   }
+
   .eyebrow::before {
     content: '';
     width: 6px;
@@ -137,6 +200,7 @@
     background: var(--accent-amber);
     box-shadow: 0 0 0 3px var(--accent-amber-soft);
   }
+
   h1 {
     font-family: var(--font-display);
     font-size: 56px;
@@ -145,7 +209,9 @@
     letter-spacing: -0.02em;
     margin-bottom: 26px;
   }
+
   h1 .hl { color: var(--accent-amber); font-style: italic; }
+
   .hero-sub {
     font-size: 18px;
     color: var(--ink-secondary);
@@ -153,60 +219,10 @@
     max-width: 480px;
     margin-bottom: 36px;
   }
+
   .hero-ctas { display: flex; gap: 14px; margin-bottom: 48px; }
   .btn-large { padding: 15px 28px; font-size: 15.5px; }
-  .trust-row {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    font-size: 13px;
-    color: var(--ink-muted);
-  }
-  .trust-row span { display: flex; align-items: center; gap: 7px; }
-  .trust-row svg { width: 15px; height: 15px; color: var(--accent-amber); flex-shrink: 0; }
-  .crivo-visual {
-    position: relative;
-    height: 460px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .crivo-card {
-    position: absolute;
-    width: 340px;
-    background: var(--bg-surface);
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-card);
-    padding: 24px;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
-  }
-  .crivo-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .crivo-card-tag {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    padding: 4px 9px;
-    border-radius: 6px;
-    letter-spacing: 0.03em;
-    font-weight: 500;
-  }
-  .tag-ia { background: rgba(159, 179, 172, 0.12); color: var(--ink-secondary); }
-  .tag-verificado { background: var(--accent-amber-soft); color: var(--accent-amber); }
-  .skeleton-line {
-    height: 9px;
-    border-radius: 4px;
-    background: var(--line-soft);
-    margin-bottom: 10px;
-  }
-  .crivo-card .skeleton-line.verified {
-    background: linear-gradient(90deg, var(--line-soft) 0%, rgba(232,163,61,0.35) 100%);
-  }
+
   .section { padding: 90px 0; position: relative; z-index: 1; }
   .section-label {
     font-family: var(--font-mono);
@@ -217,6 +233,7 @@
     margin-bottom: 16px;
     display: block;
   }
+
   h2 {
     font-family: var(--font-display);
     font-size: 38px;
@@ -226,464 +243,81 @@
     max-width: 640px;
     margin-bottom: 18px;
   }
-  .section-intro {
-    font-size: 16.5px;
-    color: var(--ink-secondary);
-    max-width: 580px;
-    line-height: 1.6;
-  }
-  .problem-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 56px;
-  }
-  .problem-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--line-soft);
-    border-radius: var(--radius-card);
-    padding: 28px;
-    transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
-  }
-  .problem-card:hover {
-    border-color: var(--line-strong);
-    transform: translateY(-3px);
-  }
-  .problem-card .num {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--accent-coral);
-    margin-bottom: 16px;
-    display: block;
-  }
-  .problem-card h3 {
-    font-family: var(--font-body);
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .problem-card p {
-    font-size: 14.5px;
-    color: var(--ink-secondary);
-    line-height: 1.55;
-  }
-  .flow-section { background: var(--bg-surface); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
-  .flow-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 60px;
-    position: relative;
-  }
-  .flow-step {
-    padding: 0 20px;
-    position: relative;
-  }
-  .flow-step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: 28px;
-    right: -2px;
-    width: 24px;
-    height: 1px;
-    background: var(--line-strong);
-  }
-  .flow-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    background: var(--bg-deep);
-    border: 1px solid var(--line-strong);
-  }
-  .flow-icon.is-human {
-    background: var(--accent-amber-soft);
-    border-color: var(--accent-amber);
-  }
-  .flow-icon svg { width: 26px; height: 26px; }
-  .flow-step h4 {
-    font-size: 15.5px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .flow-step p {
-    font-size: 13.5px;
-    color: var(--ink-secondary);
-    line-height: 1.55;
-  }
-  .flow-step .step-tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    margin-bottom: 10px;
-    display: block;
-  }
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 56px;
-  }
-  .price-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--line-soft);
-    border-radius: var(--radius-card);
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-  }
-  .price-card.featured {
-    border-color: var(--accent-amber);
-    background: linear-gradient(160deg, var(--bg-surface) 0%, rgba(232,163,61,0.06) 100%);
-    position: relative;
-  }
-  .price-card.featured::before {
-    content: 'MAIS ESCOLHIDO';
-    position: absolute;
-    top: -1px;
-    right: 24px;
-    transform: translateY(-50%);
-    background: var(--accent-amber);
-    color: #1A1306;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    padding: 5px 12px;
-    border-radius: var(--radius-pill);
-  }
-  .price-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-  .price-card .price-sub { font-size: 13.5px; color: var(--ink-secondary); margin-bottom: 24px; min-height: 40px; }
-  .price-amount {
-    font-family: var(--font-display);
-    font-size: 38px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .price-amount span { font-size: 15px; font-family: var(--font-body); color: var(--ink-secondary); font-weight: 500; }
-  .price-period { font-size: 13px; color: var(--ink-muted); margin-bottom: 26px; }
-  .price-features { display: flex; flex-direction: column; gap: 13px; margin-bottom: 28px; flex-grow: 1; }
-  .price-features li {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    font-size: 14px;
-    color: var(--ink-secondary);
-    align-items: flex-start;
-  }
-  .price-features svg { width: 16px; height: 16px; color: var(--accent-amber); flex-shrink: 0; margin-top: 2px; }
-  .lead-section {
-    background: var(--bg-surface);
-    border-radius: 24px;
-    padding: 64px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--line-soft);
-  }
-  .lead-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(232,163,61,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .lead-section h2 { margin: 0 auto 14px; }
-  .lead-section .section-intro { margin: 0 auto 36px; }
-  .lead-form {
-    display: flex;
-    gap: 12px;
-    max-width: 480px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-  }
-  .lead-form input {
-    flex: 1;
-    background: var(--bg-deep);
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-pill);
-    padding: 14px 20px;
-    color: var(--ink-primary);
-    font-family: var(--font-body);
-    font-size: 14.5px;
-    outline: none;
-    transition: border-color 0.25s var(--ease-out);
-  }
-  .lead-form input:focus { border-color: var(--accent-amber); }
-  .lead-form input::placeholder { color: var(--ink-muted); }
-  .form-note { font-size: 12.5px; color: var(--ink-muted); margin-top: 16px; }
-  .form-success {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: var(--accent-amber);
-    font-weight: 600;
-    font-size: 15px;
-    padding: 14px 0;
-  }
+
   footer {
     border-top: 1px solid var(--line-soft);
     padding: 56px 0 36px;
     position: relative;
     z-index: 1;
   }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 48px;
-  }
-  .footer-brand p {
-    font-size: 14px;
-    color: var(--ink-secondary);
-    max-width: 280px;
-    line-height: 1.6;
-    margin-top: 14px;
-  }
-  .footer-col h5 {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: var(--ink-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  .footer-col a {
-    display: block;
-    font-size: 14px;
-    color: var(--ink-secondary);
-    margin-bottom: 11px;
-    transition: color 0.2s;
-  }
-  .footer-col a:hover { color: var(--accent-amber); }
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 28px;
-    border-top: 1px solid var(--line-soft);
-    font-size: 13px;
-    color: var(--ink-muted);
-  }
-  @keyframes floatGentle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
   @media (max-width: 980px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .crivo-visual { height: 360px; margin-top: 20px; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .flow-steps { grid-template-columns: 1fr; gap: 36px; }
-    .flow-step:not(:last-child)::after { display: none; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .nav-links { display: none; }
     h1 { font-size: 38px; }
     h2 { font-size: 28px; }
-    .lead-section { padding: 40px 28px; }
-    .lead-form { flex-direction: column; }
     .wrap { padding: 0 20px; }
   }
 </style>
 </head>
 <body>
+
 <header>
   <div class="header-inner">
     <div class="logo">
       <span class="logo-mark">
-        <svg viewBox="0 0 30 30" fill="none"><rect x="2" y="2" width="26" height="26" rx="7" fill="#112B26" stroke="#E8A33D" stroke-width="1.5"/><path d="M9 15.5L13 19.5L21 10.5" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 30 30" fill="none">
+          <rect x="2" y="2" width="26" height="26" rx="7" fill="#112B26" stroke="#E8A33D" stroke-width="1.5"/>
+          <path d="M9 15.5L13 19.5L21 10.5" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </span>
       Crivo
     </div>
     <nav>
       <div class="nav-links">
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#precos">Preços</a>
+        <a href="#">Como funciona</a>
+        <a href="#">Preços</a>
+        <a href="#">Contato</a>
       </div>
-      <a href="#lead" class="btn btn-primary">Começar agora</a>
+      <a href="#" class="btn btn-primary">Começar agora</a>
     </nav>
   </div>
 </header>
+
 <main class="wrap">
   <section class="hero">
     <div class="hero-grid">
       <div>
+        <div style="margin-bottom: 32px;">
+          <div class="audience-toggle" id="audienceToggle" data-mode="pme">
+            <div class="audience-pill-bg"></div>
+            <button class="active" data-target="pme">Sou uma empresa</button>
+            <button data-target="economista">Sou economista</button>
+          </div>
+        </div>
+
         <span class="eyebrow">IA + verificação humana</span>
         <h1>Relatórios gerados por IA.<br>Validados por <span class="hl">economistas reais.</span></h1>
-        <p class="hero-sub">
-          Sua PME pede uma análise financeira. A IA produz em minutos. Um economista revisa, corrige e assina antes de chegar até você.
-        </p>
+        <p class="hero-sub">Sua PME pede uma análise financeira. A IA produz em minutos. Um economista revisa, corrige e assina antes de chegar até você.</p>
+
         <div class="hero-ctas">
-          <a href="#lead" class="btn btn-primary btn-large">Solicitar um relatório</a>
-          <a href="#como-funciona" class="btn btn-ghost btn-large">Ver como funciona</a>
-        </div>
-        <div class="trust-row">
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-            Toda análise revisada por humano
-          </span>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            Sem contrato de fidelidade
-          </span>
-        </div>
-      </div>
-      <div class="crivo-visual">
-        <div class="crivo-card" style="top: 20px; left: 0; transform: rotate(-4deg); animation: floatGentle 6s ease-in-out infinite;">
-          <div class="crivo-card-header">
-            <span class="crivo-card-tag tag-ia">GERADO POR IA</span>
-            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted);">00:42</span>
-          </div>
-          <div class="skeleton-line" style="width: 100%;"></div>
-          <div class="skeleton-line" style="width: 85%;"></div>
-          <div class="skeleton-line" style="width: 92%;"></div>
-          <div class="skeleton-line" style="width: 60%;"></div>
-        </div>
-        <div class="crivo-card" style="bottom: 10px; right: 0; transform: rotate(3deg); animation: floatGentle 7s ease-in-out infinite 0.5s;">
-          <div class="crivo-card-header">
-            <span class="crivo-card-tag tag-verificado">✓ VERIFICADO</span>
-            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-amber);">Ana C. · economista</span>
-          </div>
-          <div class="skeleton-line verified" style="width: 100%;"></div>
-          <div class="skeleton-line verified" style="width: 85%;"></div>
-          <div class="skeleton-line verified" style="width: 92%;"></div>
-          <div class="skeleton-line verified" style="width: 75%;"></div>
+          <a href="#" class="btn btn-primary btn-large">Solicitar um relatório</a>
+          <a href="#" class="btn btn-ghost btn-large">Ver como funciona</a>
         </div>
       </div>
     </div>
   </section>
-  <section class="section" id="como-funciona">
-    <span class="section-label">Como funciona</span>
-    <h2>Da pergunta ao relatório assinado, em quatro etapas.</h2>
-    <p class="section-intro">Nenhuma etapa pula a verificação humana. É essa a diferença.</p>
-    <div class="flow-steps">
-      <div class="flow-step">
-        <span class="step-tag">ETAPA 1</span>
-        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9FB3AC" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h4>A empresa pede</h4>
-        <p>Descreve o que precisa — fluxo de caixa, viabilidade, análise de margem.</p>
-      </div>
-      <div class="flow-step">
-        <span class="step-tag">ETAPA 2</span>
-        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#9FB3AC" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-7h-6M7 12H1m17.36-6.36l-4.24 4.24M9.88 14.12l-4.24 4.24m12.72 0l-4.24-4.24M9.88 9.88L5.64 5.64"/></svg></div>
-        <h4>A IA produz</h4>
-        <p>Em minutos, gera a primeira versão completa.</p>
-      </div>
-      <div class="flow-step">
-        <span class="step-tag">ETAPA 3</span>
-        <div class="flow-icon is-human"><svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="1.8"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div>
-        <h4>O economista verifica</h4>
-        <p>Revisa cada ponto e corrige o que a IA errou.</p>
-      </div>
-      <div class="flow-step">
-        <span class="step-tag">ETAPA 4</span>
-        <div class="flow-icon is-human"><svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
-        <h4>Relatório pronto</h4>
-        <p>Assinado e pronto para você consultar.</p>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="precos">
-    <span class="section-label">Investimento</span>
-    <h2>Comece com um relatório. Continue se fizer sentido.</h2>
-    <p class="section-intro">Sem mensalidade obrigatória para empresas pequenas. Sem letra miúda.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Avulso</h3>
-        <p class="price-sub">Para testar com um relatório único.</p>
-        <div class="price-amount">R$ 197<span>/relatório</span></div>
-        <div class="price-period">Pague só quando precisar</div>
-        <ul class="price-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>1 relatório verificado por economista</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Entrega em até 48h</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Suporte por chat</li>
-        </ul>
-        <a href="#lead" class="btn btn-ghost" style="width:100%; margin-top: auto;">Pedir um relatório</a>
-      </div>
-      <div class="price-card featured">
-        <h3>Mensal PME</h3>
-        <p class="price-sub">Para quem precisa de acompanhamento contínuo.</p>
-        <div class="price-amount">R$ 690<span>/mês</span></div>
-        <div class="price-period">Cancele quando quiser</div>
-        <ul class="price-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Até 4 relatórios por mês</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Entrega prioritária (24h)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>1h de consultoria incluída</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Economista dedicado fixo</li>
-        </ul>
-        <a href="#lead" class="btn btn-primary" style="width:100%; margin-top: auto;">Assinar plano mensal</a>
-      </div>
-      <div class="price-card">
-        <h3>Consultoria</h3>
-        <p class="price-sub">Conversa direta com economista.</p>
-        <div class="price-amount">R$ 250<span>/hora</span></div>
-        <div class="price-period">Agendamento flexível</div>
-        <ul class="price-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Sessão 1-a-1 por vídeo</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Escolha o economista</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Resumo por escrito ao final</li>
-        </ul>
-        <a href="#lead" class="btn btn-ghost" style="width:100%; margin-top: auto;">Agendar consultoria</a>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="lead">
-    <div class="lead-section">
-      <h2 style="margin: 0 auto 14px;">Pronto pra ver isso funcionando?</h2>
-      <p class="section-intro">Deixe seu contato. Falamos com você em até 1 dia útil.</p>
-      <form class="lead-form" id="leadForm" onsubmit="handleSubmit(event)">
-        <input type="email" placeholder="seu@email.com" required>
-        <button type="submit" class="btn btn-primary">Quero saber mais</button>
-      </form>
-      <p class="form-note">Sem spam. Sem compromisso. Você decide o próximo passo.</p>
-    </div>
+
+  <section class="section">
+    <span class="section-label">O problema real</span>
+    <h2>IA financeira sozinha erra onde mais importa.</h2>
   </section>
 </main>
+
 <footer>
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">
-          <span class="logo-mark"><svg viewBox="0 0 30 30" fill="none"><rect x="2" y="2" width="26" height="26" rx="7" fill="#112B26" stroke="#E8A33D" stroke-width="1.5"/><path d="M9 15.5L13 19.5L21 10.5" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Crivo
-        </div>
-        <p>A ponte entre inteligência artificial, economistas e pequenas empresas. Toda análise passa pelo crivo humano antes de chegar até você.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Produto</h5>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#precos">Preços</a>
-      </div>
-      <div class="footer-col">
-        <h5>Empresa</h5>
-        <a href="#">Sobre nós</a>
-        <a href="#">Carreiras</a>
-        <a href="#">Contato</a>
-      </div>
-      <div class="footer-col">
-        <h5>Legal</h5>
-        <a href="#">Termos de uso</a>
-        <a href="#">Privacidade</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Crivo. Todos os direitos reservados.</span>
-      <span>Feito no Brasil 🇧🇷</span>
-    </div>
+    <p style="text-align: center; color: var(--ink-muted);">© 2026 Crivo. Todos os direitos reservados. Feito no Brasil 🇧🇷</p>
   </div>
 </footer>
-<script>
-function handleSubmit(e) {
-  e.preventDefault();
-  alert('Obrigado! Entraremos em contato em breve.');
-  e.target.reset();
-}
-</script>
+
 </body>
 </html>
