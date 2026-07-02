@@ -10,19 +10,14 @@
   :root {
     --bg-deep: #0B1F1C;
     --bg-surface: #112B26;
-    --bg-surface-light: #163831;
     --ink-primary: #F2EEE3;
     --ink-secondary: #9FB3AC;
-    --ink-muted: #5E7770;
     --accent-amber: #E8A33D;
     --accent-amber-soft: #E8A33D1A;
-    --accent-coral: #E8633D;
     --line-soft: #1E3D36;
     --line-strong: #2A5048;
     --font-display: 'Fraunces', serif;
     --font-body: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --radius-card: 14px;
     --radius-pill: 100px;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -34,15 +29,12 @@
     font-family: var(--font-body);
     line-height: 1.5;
     overflow-x: hidden;
-    position: relative;
   }
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(232, 163, 61, 0.04) 0%, transparent 45%),
-      radial-gradient(circle at 85% 70%, rgba(232, 99, 61, 0.03) 0%, transparent 40%);
+    background-image: radial-gradient(circle at 20% 10%, rgba(232, 163, 61, 0.04) 0%, transparent 45%), radial-gradient(circle at 85% 70%, rgba(232, 99, 61, 0.03) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
   }
@@ -71,10 +63,8 @@
     font-family: var(--font-display);
     font-size: 22px;
     font-weight: 600;
-    letter-spacing: -0.01em;
   }
-  .logo-mark { width: 30px; height: 30px; position: relative; }
-  .logo-mark svg { width: 100%; height: 100%; }
+  .logo svg { width: 30px; height: 30px; }
   nav { display: flex; align-items: center; gap: 36px; }
   .nav-links { display: flex; gap: 32px; }
   .nav-links a {
@@ -97,7 +87,6 @@
     border: none;
     cursor: pointer;
     transition: all 0.25s var(--ease-out);
-    white-space: nowrap;
   }
   .btn-primary {
     background: var(--accent-amber);
@@ -108,12 +97,6 @@
     transform: translateY(-1px);
     box-shadow: 0 8px 20px -6px rgba(232, 163, 61, 0.5);
   }
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink-primary);
-    border: 1px solid var(--line-strong);
-  }
-  .btn-ghost:hover { border-color: var(--accent-amber); background: var(--accent-amber-soft); }
   .hero {
     position: relative;
     padding: 100px 0 90px;
@@ -130,16 +113,45 @@
     font-size: 56px;
     font-weight: 600;
     line-height: 1.06;
-    letter-spacing: -0.02em;
     margin-bottom: 26px;
   }
-  h1 .hl { color: var(--accent-amber); font-style: italic; }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+  .hero-ctas { display: flex; gap: 14px; margin-bottom: 48px; }
   .btn-large { padding: 15px 28px; font-size: 15.5px; }
+  .section { padding: 90px 0; position: relative; z-index: 1; }
+  h2 {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.15;
+    max-width: 640px;
+    margin-bottom: 18px;
+  }
+  footer {
+    border-top: 1px solid var(--line-soft);
+    padding: 56px 0 36px;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 13px;
+    color: #5E7770;
+  }
   @media (max-width: 980px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
     h1 { font-size: 38px; }
-    .wrap { padding: 0 20px; }
+    h2 { font-size: 28px; }
   }
 </style>
 </head>
@@ -147,46 +159,54 @@
 <header>
   <div class="header-inner">
     <div class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 30 30" fill="none">
-          <rect x="2" y="2" width="26" height="26" rx="7" fill="#112B26" stroke="#E8A33D" stroke-width="1.5"/>
-          <path d="M9 15.5L13 19.5L21 10.5" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
+      <svg viewBox="0 0 30 30" fill="none"><rect x="2" y="2" width="26" height="26" rx="7" fill="#112B26" stroke="#E8A33D" stroke-width="1.5"/><path d="M9 15.5L13 19.5L21 10.5" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Crivo
     </div>
     <nav>
       <div class="nav-links">
         <a href="#como-funciona">Como funciona</a>
         <a href="#precos">Preços</a>
-        <a href="login.html">Login</a>
+        <a href="#lead">Contato</a>
       </div>
       <a href="#lead" class="btn btn-primary">Começar agora</a>
     </nav>
   </div>
 </header>
-
 <main class="wrap">
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <h1>Relatórios gerados por IA.<br>Validados por <span class="hl">economistas reais.</span></h1>
-        <p style="font-size: 18px; color: var(--ink-secondary); margin-bottom: 36px;">
-          Sua PME pede uma análise financeira. A IA produz em minutos. Um economista revisa, corrige e assina antes de chegar até você.
-        </p>
-        <div style="display: flex; gap: 14px;">
-          <a href="login.html" class="btn btn-primary btn-large">Solicitar relatório</a>
-          <a href="#" class="btn btn-ghost btn-large">Ver como funciona</a>
+        <h1>Relatórios gerados por IA.<br>Validados por <span style="color: var(--accent-amber); font-style: italic;">economistas reais.</span></h1>
+        <p class="hero-sub">Sua PME pede uma análise financeira. A IA produz em minutos. Um economista revisa, corrige e assina antes de chegar até você.</p>
+        <div class="hero-ctas">
+          <a href="#lead" class="btn btn-primary btn-large">Solicitar relatório</a>
+          <a href="#como-funciona" class="btn btn-large" style="border: 1px solid var(--line-strong); background: transparent;">Ver como funciona</a>
         </div>
+      </div>
+      <div style="text-align: center; color: var(--ink-secondary);">
+        <p>Demonstração interativa do Crivo</p>
       </div>
     </div>
   </section>
+  <section class="section" id="como-funciona">
+    <h2>Como funciona</h2>
+    <p style="font-size: 16.5px; color: var(--ink-secondary); max-width: 580px;">Da pergunta ao relatório assinado, em quatro etapas simples.</p>
+  </section>
+  <section class="section" id="precos">
+    <h2>Preços</h2>
+    <p style="font-size: 16.5px; color: var(--ink-secondary); max-width: 580px;">Sem mensalidade obrigatória. Pague só quando precisar.</p>
+  </section>
+  <section class="section" id="lead">
+    <h2>Pronto para começar?</h2>
+    <p style="font-size: 16.5px; color: var(--ink-secondary); max-width: 580px;">Deixe seu contato e entramos em contato em breve.</p>
+  </section>
 </main>
-
-<footer style="border-top: 1px solid var(--line-soft); padding: 56px 0 36px; text-align: center;">
+<footer>
   <div class="wrap">
-    <p>© 2026 Crivo. Todos os direitos reservados.</p>
-    <p>Feito no Brasil 🇧🇷</p>
+    <div class="footer-bottom">
+      <span>© 2026 Crivo. Todos os direitos reservados.</span>
+      <span>Feito no Brasil 🇧🇷</span>
+    </div>
   </div>
 </footer>
 </body>
